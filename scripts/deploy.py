@@ -10,7 +10,7 @@ def deploy_token_farm_and_dapp_token():
     account = get_account()
     dapp_token = DappToken.deploy({"from": account})
     token_farm = TokenFarm.deploy(
-        dapp_token.address,
+        dapp_token,
         {"from": account},
         publish_source=config["networks"][network.show_active()].get("verify", False),
     )

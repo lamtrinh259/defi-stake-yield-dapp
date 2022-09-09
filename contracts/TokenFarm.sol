@@ -128,7 +128,7 @@ contract TokenFarm is Ownable {
         allowedTokens.push(_token);
     }
 
-    function tokenIsAllowed(address _token) public returns (bool) {
+    function tokenIsAllowed(address _token) public view returns (bool) {
         for (
             uint256 allowedTokensIndex = 0;
             allowedTokensIndex < allowedTokens.length;
@@ -140,6 +140,4 @@ contract TokenFarm is Ownable {
         }
         return false;
     }
-
-    // getEthValue
 }

@@ -11,7 +11,9 @@ from brownie import (
 import os
 import time
 
+# This is 2000
 INITIAL_PRICE_FEED_VALUE = 2000000000000000000000
+DECIMALS = 18
 
 # Set a default gas price
 from brownie.network import priority_fee
@@ -91,12 +93,24 @@ def get_publish_source():
         return True
 
 
-def fund_with_link(
-    contract_address, account=None, link_token=None, amount=1000000000000000000
+def fund_with_weth(
+    contract_address, account=None, weth_token=None, amount=1000000000000000000
 ):
     account = account if account else get_account()
-    link_token = link_token if link_token else get_contract("link_token")
-    tx = interface.LinkTokenInterface(link_token).transfer(
+    weth_token = weth_token if weth_token else get_contract("eth_token")
+    tx = interface.LinkTokenInterface(weth_token).transfer(
+        contract_address, amount, {"from": account}
+    )
+    print(f"Funded {contract_address}")
+    return tx
+
+
+def fund_with_dai(
+    contract_address, account=None, dai_token=None, amount=1000000000000000000
+):
+    account = account if account else get_account()
+    dai_token = dai_token if dai_token else get_contract("dai_token")
+    tx = interface.LinkTokenInterface(dai_token).transfer(
         contract_address, amount, {"from": account}
     )
     print(f"Funded {contract_address}")
