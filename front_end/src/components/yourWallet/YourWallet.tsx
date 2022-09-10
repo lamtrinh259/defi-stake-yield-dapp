@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import { Box, makeStyles } from "@material-ui/core"
 import { Tab } from "@material-ui/core"
 import { TabContext, TabList, TabPanel } from "@material-ui/lab"
-import { Token } from "@usedapp/core"
+// import { Token } from "@usedapp/core"
 import { WalletBalance } from "./WalletBalance"
 import { StakeForm } from "./StakeForm"
 

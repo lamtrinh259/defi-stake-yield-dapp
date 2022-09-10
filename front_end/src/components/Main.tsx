@@ -11,6 +11,7 @@ import dai from "../dai.png"
 import { YourWallet } from "./yourWallet"
 import { makeStyles } from "@material-ui/core"
 import { classicNameResolver } from "typescript"
+// import { View } from "react" // Not sure how to import this
 
 export type Token = {
     image: string
@@ -20,8 +21,8 @@ export type Token = {
 
 const useStyles = makeStyles((theme) => ({
     title: {
-        color: theme.palette.common.white
-        textAlign: "center"
+        color: theme.palette.common.white,
+        textAlign: "center",
         padding: theme.spacing(4)
     }
 }))
@@ -48,25 +49,27 @@ export const Main = () => {
     const wethTokenAddress = chainId ? brownieConfig['networks'][networkName['weth_token']] : constants.AddressZero
     const fauTokenAddress = chainId ? brownieConfig['networks'][networkName]['fau_token'] : constants.AddressZero
 
-    const supportedTokens: Array<Token> = {
+    const supportedTokens: Array<Token> = [
         {
-        image: dapp
-        address: dappTokenAddress
-        name: 'DAPP'
-    }
-    {
-        image: eth
-        address: wethTokenAddress
-        name: 'WETH'
-    }
-    {
-        image: dai
-        address: fauTokenAddress
-        name: 'DAI'
-    }
-}
+            image: dapp,
+            address: dappTokenAddress,
+            name: 'DAPP'
+        },
+        {
+            image: eth,
+            address: wethTokenAddress,
+            name: 'WETH'
+        },
+        {
+            image: dai,
+            address: fauTokenAddress,
+            name: 'DAI'
+        }
+    ]
 
-return (
-<h2 className = {classes.title}>Dapp Token App</h2>
-<YourWallet supportedTokens={supportedTokens} />)
+    return (
+        <div>
+            <h2 className={classes.title}>Dapp Token App</h2>
+            <YourWallet supportedTokens={supportedTokens} />
+        </div>)
 }
