@@ -3,8 +3,7 @@
 <br/>
 <p align="center">
 <a href="https://chain.link" target="_blank">
-<img src=".
-Sep112022_dapp_UI_basic.png" width="500" alt="Full Stack Example">
+<img src="Sep112022_dapp_UI_basic.png" width="500" alt="Full Stack Example">
 </a>
 </p>
 <br/>
